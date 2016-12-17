@@ -1,0 +1,43 @@
+
+;;; Dwango Pre 3-B-2
+;;; Fail
+
+(defun 25length (str start)
+  (loop for i from (1+ start) below (length str)
+        for c = (char str i)
+        and b = (char str start) then c
+        unless (case b
+                 (#\2 (eq c #\5))
+                 (#\5 (eq c #\2))
+                 (otherwise nil))
+        do (return (- i start))
+        finally (return (- i start))))
+
+(let* ((dat (read-line))
+       (o (make-array (length dat) :element-type 'character :initial-contents dat))
+       (e (make-array (length dat) :element-type 'character :initial-contents dat))
+       (m 0))
+  (loop for i from 0 below (length dat)
+        for c = (char dat i)
+        when (eq c #\?)
+        do (setf (aref o i)
+                 (if (integerp (/ i 2)) #\2 #\5)))
+  (loop for i from 0 below (length dat)
+        for c = (char dat i)
+        when (eq c #\?)
+        do (setf (aref e i)
+                 (if (integerp (/ i 2)) #\5 #\2)))
+  (format t "~A~%~A~%" o e)
+  (loop for i from 0 below (length o)
+        for c = (char o i)
+        when (eq c #\2)
+        do (let ((l (25length o i)))
+             (setf m (max m l))
+             (incf i l)))
+  (loop for i from 0 below (length e)
+        for c = (char e i)
+        when (eq c #\2)
+        do (let ((l (25length e i)))
+             (setf m (max m l))
+             (incf i l)))
+  (format t "~A~%" m))
