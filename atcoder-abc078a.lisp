@@ -1,0 +1,8 @@
+(let* ((line (read-line))
+       (x (char-int (char line 0)))
+       (y (char-int (char line 2))))
+  (if (< x y)
+    (format t "<")
+    (if (= x y)
+      (format t "=")
+      (format t ">"))))
