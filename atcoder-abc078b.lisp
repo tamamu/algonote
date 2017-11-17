@@ -1,0 +1,6 @@
+(let ((x (read))
+      (y (read))
+      (z (read)))
+  (let* ((a (- x z))
+	 (b (/ a (+ y z))))
+    (format t "~A~%" (floor b))))
