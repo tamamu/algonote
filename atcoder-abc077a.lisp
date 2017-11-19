@@ -1,0 +1,6 @@
+(let ((line1 (read-line))
+      (line2 (read-line)))
+  (if (string= (reverse line1)
+               line2)
+      (format t "YES~%")
+      (format t "NO~%")))
