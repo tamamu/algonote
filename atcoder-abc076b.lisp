@@ -1,0 +1,8 @@
+(let ((n (read))
+      (k (read))
+      (total 1))
+  (dotimes (i n)
+    (if (< total k)
+        (setf total (* total 2))
+        (incf total k)))
+  (format t "~A~%" total))
