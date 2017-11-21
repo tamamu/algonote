@@ -1,0 +1,5 @@
+(let* ((n (read))
+       (total 0))
+  (dotimes (i n)
+    (incf total (1+ (abs (- (read) (read))))))
+  (format t "~A~%" total))
