@@ -1,0 +1,15 @@
+(let ((a (read))
+      (b (read))
+      (c (read))
+      (d (read)))
+  (cond
+    ((<= a c b d)
+     (format t "~A~%" (- b c)))
+    ((<= c a d b)
+     (format t "~A~%" (- d a)))
+    ((<= a c d b)
+     (format t "~A~%" (- d c)))
+    ((<= c a b d)
+     (format t "~A~%" (- b a)))
+    (t
+      (format t "0~%"))))
