@@ -1,0 +1,12 @@
+(let ((n (read))
+      (tm (read))
+      (before 0)
+      (total 0))
+  (dotimes (i n)
+    (let ((x (read)))
+      (incf total
+            (min (- x before)
+                 tm))
+      (setf before x)))
+  (incf total tm)
+  (format t "~A~%" total))
