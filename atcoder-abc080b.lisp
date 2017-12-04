@@ -1,0 +1,5 @@
+(let* ((n (read-line))
+       (fx (loop for ch across n sum (- (char-code ch) (char-code #\0)))))
+  (if (= 0 (mod (parse-integer n) fx))
+      (format t "Yes~%")
+      (format t "No~%")))
