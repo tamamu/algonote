@@ -1,0 +1,7 @@
+(let* ((n (read))
+       (a (list)))
+  (dotimes (i n)
+    (push (cons (read) (1+ i)) a))
+  (let ((sorted (sort (copy-list a) #'> :key #'car)))
+    (dolist (pair sorted)
+      (format t "~A~%" (cdr pair)))))
