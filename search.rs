@@ -40,11 +40,11 @@ fn breadth_first_search(graph: &Graph, source: usize) -> (Vec<i32>, Vec<i32>) {
     let mut dist: Vec<i32> = vec![std::i32::MAX;n];
     let mut color: Vec<VertexColor> = vec![VertexColor::White;n];
 
-    dist[0] = 0;
+    dist[source] = 0;
     color[source] = VertexColor::Gray;
 
     let mut q: VecDeque<usize> = VecDeque::new();
-    q.push_front(source);
+    q.push_back(source);
 
     while !q.is_empty() {
         let u = q.front().unwrap().clone();
@@ -54,7 +54,7 @@ fn breadth_first_search(graph: &Graph, source: usize) -> (Vec<i32>, Vec<i32>) {
                 dist[v] = dist[u] + 1;
                 pred[v] = u as i32;
                 color[v] = VertexColor::Gray;
-                q.push_front(v);
+                q.push_back(v);
             }
         }
 
