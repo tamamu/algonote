@@ -33,7 +33,7 @@ public:
   }
   void show() {
     for (vector<T> &v : _raw) {
-      for ( int x : v ) cout << x << ' ';
+      for ( T x : v ) cout << x << ' ';
       cout << endl;
     }
   }
