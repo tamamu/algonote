@@ -16,6 +16,27 @@ public:
   }
 };
 
+class loge : public func {
+public:
+  double f(const M &in, size_t i) const { return log(in._raw[0][i]); }
+  double df(double y) const { return 1 / y; }
+};
+
+class cross_entropy {
+public:
+  static double f(const M &t, const M &y) {
+    double result = 0.0;
+    for (int j=0; j < get<1>(t.shape()); ++j) {
+      result += t._raw[0][j] * log(y._raw[0][j]);
+    }
+    return -result;
+  }
+  static double df(const M &t, const M &y, size_t i) {
+    double p = t._raw[0][i], q = y._raw[0][i];
+    return -p/q + (1-p)/(1-q);
+  }
+};
+
 class sigmoid : public func {
 public:
   double f(const M &in, size_t i) const { return 1.0 / (1.0 + exp(-in._raw[0][i])); }
