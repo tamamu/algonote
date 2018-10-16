@@ -20,6 +20,12 @@ int main()
   cross_entropy loss;
   matrix<double> ty({{0, 0, 1}});
   double L = loss.f(ty, Py);
+
+  for (int epoch=0; epoch < 100; ++epoch) {
+    matrix<double> dZ(1, 3); 
+    matrix<double> dW2(5, 3);
+  }
+
   cout << L << endl;
   return 0;
 }
